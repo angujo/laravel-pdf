@@ -3,11 +3,11 @@
 namespace Angujo\LaravelPDF;
 
 use Config, Exception, File, View;
-use mPDF;
+use Mpdf\Mpdf;
 
 //use font_data
 
-Class PDF extends mPDF\Mpdf {
+Class PDF extends Mpdf {
 
     protected $config = [];
 
