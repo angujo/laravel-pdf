@@ -7,7 +7,7 @@ use mPDF;
 
 //use font_data
 
-Class PDF extends mPDF {
+Class PDF extends mPDF\Mpdf {
 
     protected $config = [];
 
