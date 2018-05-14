@@ -27,7 +27,7 @@ Class PDF extends Mpdf
 
         if (Config::has('pdf.temp_dir') && $this->getConfig('temp_dir')) {
             define('_MPDF_TEMP_PATH', $this->getConfig('temp_dir'));
-            if (!file_exists(_MPDF_TEMP_PATH)){
+            if (!file_exists(_MPDF_TEMP_PATH)) {
                 if (!mkdir(_MPDF_TEMP_PATH, 0755, true) && !is_dir(_MPDF_TEMP_PATH)) {
                     throw new \RuntimeException(sprintf('Directory "%s" was not created', _MPDF_TEMP_PATH));
                 }
@@ -35,7 +35,7 @@ Class PDF extends Mpdf
         }
         if (Config::has('pdf.temp_fonts') && $this->getConfig('temp_fonts')) {
             define('_MPDF_TTFONTDATAPATH', $this->getConfig('temp_fonts'));
-            if (!file_exists(_MPDF_TTFONTDATAPATH)){
+            if (!file_exists(_MPDF_TTFONTDATAPATH)) {
                 if (!mkdir(_MPDF_TTFONTDATAPATH, 0755, true) && !is_dir(_MPDF_TTFONTDATAPATH)) {
                     throw new \RuntimeException(sprintf('Directory "%s" was not created', _MPDF_TTFONTDATAPATH));
                 }
@@ -45,21 +45,23 @@ Class PDF extends Mpdf
             define('_MPDF_SYSTEM_TTFONTS_CONFIG', __DIR__ . '/../mpdf_ttfonts_config.php');
         }
 
-        parent::__construct(
-            [
-                'mode' => $this->getConfig('mode'),              // mode - default ''
-                'format' => $this->getConfig('format'),            // format - A4, for example, default ''
-                'default_font_size' => $this->getConfig('default_font_size'), // font size - default 0
-                'default_font' => $this->getConfig('default_font'),      // default font family
-                'margin_left' => $this->getConfig('margin_left'),       // margin_left
-                'margin_right' => $this->getConfig('margin_right'),      // margin right
-                'margin_top' => $this->getConfig('margin_top'),        // margin top
-                'margin_bottom' => $this->getConfig('margin_bottom'),     // margin bottom
-                'margin_header' => $this->getConfig('margin_header'),     // margin header
-                'margin_footer' => $this->getConfig('margin_footer'),     // margin footer
-                'orientation' => $this->getConfig('orientation'),       // L - landscape, P - portrait
-            ]
-        );
+        $defConfig = [
+            'mode' => $this->getConfig('mode'),              // mode - default ''
+            'format' => $this->getConfig('format'),            // format - A4, for example, default ''
+            'default_font_size' => $this->getConfig('default_font_size'), // font size - default 0
+            'default_font' => $this->getConfig('default_font'),      // default font family
+            'margin_left' => $this->getConfig('margin_left'),       // margin_left
+            'margin_right' => $this->getConfig('margin_right'),      // margin right
+            'margin_top' => $this->getConfig('margin_top'),        // margin top
+            'margin_bottom' => $this->getConfig('margin_bottom'),     // margin bottom
+            'margin_header' => $this->getConfig('margin_header'),     // margin header
+            'margin_footer' => $this->getConfig('margin_footer'),     // margin footer
+            'orientation' => $this->getConfig('orientation'),       // L - landscape, P - portrait
+        ];
+        if (defined('_MPDF_TEMP_PATH') && file_exists(_MPDF_TEMP_PATH)) {
+            $defConfig['tempDir'] = _MPDF_TEMP_PATH;
+        }
+        parent::__construct($defConfig);
 
         $font_data = include(__DIR__ . '/fontdata.php');
         if (is_array($font_data)) {
