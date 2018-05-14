@@ -1,5 +1,5 @@
 <?php
-namespace ZanySoft\LaravelPDF\Facades;
+namespace Angujo\LaravelPDF\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

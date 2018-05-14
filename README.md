@@ -18,7 +18,7 @@
 Require this package in your `composer.json` or install it by running:
 
 ```
-composer require zanysoft/laravel-pdf
+composer require Angujo/laravel-pdf
 ```
 
 To start using Laravel, add the Service Provider and the Facade to your `config/app.php`:
@@ -26,21 +26,21 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 ```php
 'providers' => [
 	// ...
-	ZanySoft\LaravelPDF\PdfServiceProvider::class
+	Angujo\LaravelPDF\PdfServiceProvider::class
 ]
 ```
 
 ```php
 'aliases' => [
 	// ...
-	'PDF' => ZanySoft\LaravelPDF\Facades\PDF::class
+	'PDF' => Angujo\LaravelPDF\Facades\PDF::class
 ]
 ```
 
 ### Configuration
 The defaults configuration settings are set in `config/pdf.php`. Copy this file to your own config directory to modify the values. You can publish the config using this command:
 
-    php artisan vendor:publish --provider="ZanySoft\LaravelPDF\PdfServiceProvider"
+    php artisan vendor:publish --provider="Angujo\LaravelPDF\PdfServiceProvider"
 
 
 ### Basic Usage
@@ -62,7 +62,7 @@ function generate_pdf() {
 or
 
 ```php
-use ZanySoft\LaravelPDF\PDF;
+use Angujo\LaravelPDF\PDF;
 
 function generate_pdf() {
 	$data = [

@@ -1,6 +1,6 @@
 <?php
 
-namespace ZanySoft\LaravelPDF;
+namespace Angujo\LaravelPDF;
 
 use Illuminate\Support\ServiceProvider;
 
