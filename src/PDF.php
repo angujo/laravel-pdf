@@ -24,12 +24,15 @@ Class PDF extends Mpdf
 
         $this->config = array_merge($config, $configs);
 
+
+        if (Config::has('pdf.temp_dir') && $this->getConfig('temp_dir')) {
+            define('_MPDF_TEMP_PATH', $this->getConfig('temp_dir'));
+        }
+        if (Config::has('pdf.temp_fonts') && $this->getConfig('temp_fonts')) {
+            define('_MPDF_TTFONTDATAPATH', $this->getConfig('temp_fonts'));
+        }
         if (Config::has('pdf.custom_font_path') && Config::has('pdf.custom_font_data')) {
             define('_MPDF_SYSTEM_TTFONTS_CONFIG', __DIR__ . '/../mpdf_ttfonts_config.php');
-        }
-
-        if (Config::has('pdf.tempDir') && $this->getConfig('tempDir')) {
-            define('_MPDF_TEMP_PATH', $this->getConfig('tempDir'));
         }
 
         parent::__construct(

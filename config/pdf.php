@@ -21,5 +21,6 @@ return [
     'watermark_font' => 'sans-serif',
     'display_mode' => 'fullpage',
     'watermark_text_alpha' => 0.1,
-    'tempDir' => '',
+    'temp_dir' => '',
+    'temp_fonts' => '',
 ];
