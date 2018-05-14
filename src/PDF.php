@@ -63,6 +63,11 @@ Class PDF extends Mpdf
         }
         parent::__construct($defConfig);
 
+        if (Config::has('debug_imgs') && $this->getConfig('debug_imgs')){
+            $this->showImageErrors=true;
+            $this->debug=true;
+        }
+
         $font_data = include(__DIR__ . '/fontdata.php');
         if (is_array($font_data)) {
             $this->fontdata = array_merge($this->fontdata, $font_data);
