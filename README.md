@@ -1,4 +1,5 @@
-# Laravel PDF: PDF generator for Laravel 5.2
+# Laravel PDF: PDF generator for Laravel 5.* and MPDF 7.*
+
 
 > Easily generate PDF documents from HTML right inside of Laravel using this PDF wrapper.
 
@@ -21,7 +22,10 @@ Require this package in your `composer.json` or install it by running:
 composer require Angujo/laravel-pdf
 ```
 
-To start using Laravel, add the Service Provider and the Facade to your `config/app.php`:
+This version will automatically set the alias for latest versions of Laravel >=5.5
+
+####Laravel 5.4 and older
+To start using in Laravel 5.4 and older, add the Service Provider and the Facade to your `config/app.php`:
 
 ```php
 'providers' => [
