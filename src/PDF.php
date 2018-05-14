@@ -63,7 +63,7 @@ Class PDF extends Mpdf
         }
         parent::__construct($defConfig);
 
-        if (Config::has('debug_imgs') && $this->getConfig('debug_imgs')){
+        if (Config::has('pdf.debug_imgs') && $this->getConfig('pdf.debug_imgs')){
             $this->showImageErrors=true;
             $this->debug=true;
         }
