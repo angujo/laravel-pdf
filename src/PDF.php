@@ -4,6 +4,7 @@ namespace Angujo\LaravelPDF;
 
 use Config, Exception, File, View;
 use Mpdf\Mpdf;
+use Mpdf\Utils\UtfString;
 
 //use font_data
 
@@ -91,7 +92,7 @@ Class PDF extends Mpdf
     public function loadHTML($html)
     {
 
-        $wm = strcode2utf($html);
+        $wm = UtfString::strcode2utf($html);
 
         $this->WriteHTML($wm);
     }
