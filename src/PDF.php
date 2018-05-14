@@ -27,9 +27,19 @@ Class PDF extends Mpdf
 
         if (Config::has('pdf.temp_dir') && $this->getConfig('temp_dir')) {
             define('_MPDF_TEMP_PATH', $this->getConfig('temp_dir'));
+            if (!file_exists(_MPDF_TEMP_PATH)){
+                if (!mkdir(_MPDF_TEMP_PATH, 0755, true) && !is_dir(_MPDF_TEMP_PATH)) {
+                    throw new \RuntimeException(sprintf('Directory "%s" was not created', _MPDF_TEMP_PATH));
+                }
+            }
         }
         if (Config::has('pdf.temp_fonts') && $this->getConfig('temp_fonts')) {
             define('_MPDF_TTFONTDATAPATH', $this->getConfig('temp_fonts'));
+            if (!file_exists(_MPDF_TTFONTDATAPATH)){
+                if (!mkdir(_MPDF_TTFONTDATAPATH, 0755, true) && !is_dir(_MPDF_TTFONTDATAPATH)) {
+                    throw new \RuntimeException(sprintf('Directory "%s" was not created', _MPDF_TTFONTDATAPATH));
+                }
+            }
         }
         if (Config::has('pdf.custom_font_path') && Config::has('pdf.custom_font_data')) {
             define('_MPDF_SYSTEM_TTFONTS_CONFIG', __DIR__ . '/../mpdf_ttfonts_config.php');
