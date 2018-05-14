@@ -28,6 +28,10 @@ Class PDF extends Mpdf
             define('_MPDF_SYSTEM_TTFONTS_CONFIG', __DIR__ . '/../mpdf_ttfonts_config.php');
         }
 
+        if (Config::has('pdf.tempDir') && $this->getConfig('tempDir')) {
+            define('_MPDF_TEMP_PATH', $this->getConfig('tempDir'));
+        }
+
         parent::__construct(
             [
                 'mode' => $this->getConfig('mode'),              // mode - default ''
